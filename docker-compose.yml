@@ -1,0 +1,51 @@
+version: "3"
+services:
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "4200:4200"
+    command: npm run dev
+    volumes:
+      - ./frontend/folder-creation:/usr/src/app
+      - /usr/src/app/node_modules
+    networks:
+      - app-network
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    command: npm run dev
+    volumes:
+      - ./backend:/usr/src/app
+    networks:
+      - app-network
+    environment:
+      - DB_HOST=db
+      - DB_USER=root
+      - DB_PASSWORD=rootpassword
+      - DB_NAME=mydatabase
+
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: rootpassword
+      POSTGRES_DB: mydatabase
+    ports:
+      - "5432:5432"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  db-data:
