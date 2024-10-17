@@ -1,0 +1,37 @@
+<div style="max-width: 600px; margin: auto">
+  <h3 style="text-align: center">教科選択</h3>
+
+  <mat-form-field appearance="fill" style="width: 100%">
+    <mat-label>レッスンを選択してください</mat-label>
+    <mat-select
+      [(ngModel)]="selectedLessonId"
+      (selectionChange)="onLessonChange()"
+    >
+      <mat-option value="" disabled>選択してください</mat-option>
+      <mat-option *ngFor="let lesson of lessons" [value]="lesson.id">
+        {{ lesson.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <div style="display: flex; align-items: center; margin-top: 16px">
+    <mat-form-field appearance="fill" style="flex: 1; margin-right: 10px">
+      <mat-label>フォルダ名を入力</mat-label>
+      <input matInput [(ngModel)]="folderName" placeholder="フォルダ名を入力" />
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="createFolder()">
+      フォルダ作成
+    </button>
+  </div>
+
+  <h3 style="text-align: center; margin-top: 24px">作成されたフォルダ一覧</h3>
+  <mat-list>
+    <mat-list-item *ngFor="let folder of folders">
+      <mat-icon matListIcon>folder</mat-icon>
+      {{ folder.name }}
+      <button mat-icon-button (click)="confirmDelete(folder.id)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </mat-list-item>
+  </mat-list>
+</div>

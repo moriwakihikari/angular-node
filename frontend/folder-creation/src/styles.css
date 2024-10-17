@@ -1,0 +1,67 @@
+/* app.component.cssに書きたいけど反映されない、、一旦こっち */
+
+/* 背景スタイル */
+body {
+  background: linear-gradient(
+    135deg,
+    rgba(176, 176, 176, 0.8),
+    rgba(255, 255, 255, 0.5) 50%,
+    rgba(176, 176, 176, 0.8) 50%,
+    rgba(255, 255, 255, 0.5)
+  ); /* 斜めのグラデーションを作成 */
+  background-size: 200% 200%; /* 背景サイズを調整してより広く */
+  font-family: "Roboto", sans-serif; /* フォント設定 */
+  animation: gradientAnimation 5s ease-in-out forwards; /* アニメーションを追加 */
+}
+
+/* 背景アニメーション */
+@keyframes gradientAnimation {
+  0% {
+    background-position: 100% 50%; /* 右からスタート */
+  }
+  100% {
+    background-position: 0% 50%; /* 左にスライド */
+  }
+}
+/* フォームのスタイル */
+.mat-form-field {
+  width: 100%;
+  background-color: rgba(249, 249, 249, 0.9); /* 半透明の背景色 */
+  border: 1px solid #aaaaaa; /* ボーダーをやや濃いグレーに */
+  border-radius: 4px; /* 角を丸くする */
+}
+
+/* ボタンスタイル */
+button.mat-raised-button {
+  background-color: #3f51b5; /* プライマリカラー */
+  color: white; /* テキスト色を白に */
+  border-radius: 4px; /* 角を丸くする */
+}
+
+button.mat-raised-button:hover {
+  background-color: #304ffe; /* ホバー時の色を少しダークに */
+}
+
+/* フォルダ一覧アイテム */
+.mat-list-item {
+  display: flex;
+  align-items: center;
+  padding: 10px 16px; /* アイテムの内側のパディングを調整 */
+  background-color: rgba(249, 249, 249, 0.9); /* 半透明のアイテム背景色 */
+  color: #222; /* テキスト色を濃いグレーに */
+  transition: background-color 0.3s;
+}
+
+.mat-list-item:hover {
+  background-color: rgba(
+    224,
+    224,
+    224,
+    0.8
+  ); /* ホバー時の背景色をやや濃いグレーに */
+}
+
+button[mat-icon-button] {
+  margin-left: auto;
+  color: #222; /* アイコンの色を濃いグレーに */
+}
