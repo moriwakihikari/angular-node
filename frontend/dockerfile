@@ -10,6 +10,9 @@ COPY folder-creation/package*.json ./
 # npmで依存関係をインストール
 RUN npm install
 
+# Angular CLIをグローバルにインストール
+RUN npm install -g @angular/cli
+
 # アプリケーションのソースコードをコピー
 COPY folder-creation/ ./
 
